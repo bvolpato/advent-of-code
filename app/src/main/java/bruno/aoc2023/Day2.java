@@ -49,8 +49,7 @@ public class Day2 {
         ans1 += gameNum;
       }
 
-      int asInt =
-          maxPerColorTurns.values().stream().mapToInt(i -> i).reduce((a, b) -> a * b).getAsInt();
+      int asInt = maxPerColorTurns.values().stream().reduce(1, (a, b) -> a * b);
       System.out.println(maxPerColorTurns + " -> " + asInt);
       ans2 += asInt;
     }
