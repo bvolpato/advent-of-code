@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Day5 {
+public class Day05 {
 
     static class XtoYSized {
         long destinationStart;

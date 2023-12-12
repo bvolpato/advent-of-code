@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public class Day3 {
+public class Day03 {
     static int[][] moves = new int[][]{
             {-1, -1},
             {-1, 0},

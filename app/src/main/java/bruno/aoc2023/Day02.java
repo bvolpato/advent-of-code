@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.brunocvcunha.inutils4j.MyStringUtils;
 
-public class Day2 {
+public class Day02 {
 
     private static Map<String, Integer> available = new HashMap<>();
 

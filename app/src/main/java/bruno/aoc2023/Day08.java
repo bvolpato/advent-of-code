@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day8 {
+public class Day08 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
         String clipboard = MyStringUtils.getFromClipboard();

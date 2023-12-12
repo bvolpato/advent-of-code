@@ -6,7 +6,7 @@ import java.util.*;
 
 import org.brunocvcunha.inutils4j.MyStringUtils;
 
-public class Day4 {
+public class Day04 {
 
   public static void main(String[] args) throws IOException, UnsupportedFlavorException {
     String clipboard = MyStringUtils.getFromClipboard();

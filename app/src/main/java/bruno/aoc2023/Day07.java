@@ -5,13 +5,12 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day7 {
+public class Day07 {
 
     //static final char[] order = {'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2'};
     // part 2 now

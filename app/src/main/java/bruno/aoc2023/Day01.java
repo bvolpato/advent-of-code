@@ -6,7 +6,7 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.List;
 
-public class Day1 {
+public class Day01 {
 
   public static void main(String[] args) throws IOException, UnsupportedFlavorException {
     String clipboard = MyStringUtils.getFromClipboard();

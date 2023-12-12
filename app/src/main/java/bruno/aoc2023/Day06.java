@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day6 {
+public class Day06 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
         String clipboard = MyStringUtils.getFromClipboard();
