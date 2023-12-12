@@ -32,9 +32,11 @@ public class Day10 {
       }
     }
 
+    boolean[][] visited = new boolean[grid.length][grid[0].length];
     Queue<Point> queue = new LinkedList<>();
     queue.offer(initialPoint);
 
+    int max = 0;
     while (!queue.isEmpty()) {
 
       Point curr = queue.poll();
@@ -59,6 +61,7 @@ public class Day10 {
 
       if (curr.equals(initialPoint) && curr.max > 0) {
         System.out.println("Back at initial!! " + curr + ", steps: " + (curr.max / 2));
+        max = curr.max;
         break;
       }
 
@@ -79,8 +82,28 @@ public class Day10 {
 
         System.out.println("Going next to " + newrow + " and " + newcol);
         queue.offer(new Point(curr.row, curr.col, newrow, newcol, curr.max + 1));
+        visited[newrow][newcol] = true;
       }
     }
+
+    int outer = dfs(0, 0, grid, visited);
+    System.out.println("Outer: " + outer);
+
+    System.out.println("Ans2: " + ((grid.length * grid[0].length) - outer - max) / 2);
+  }
+
+  private static int dfs(int row, int col, char[][] grid, boolean[][] visited) {
+    if (row < 0 || col < 0 || row >= grid.length || col >= grid[0].length || visited[row][col]) {
+      return 0;
+    }
+
+    visited[row][col] = true;
+
+    return 1
+        + dfs(row + 1, col, grid, visited)
+        + dfs(row - 1, col, grid, visited)
+        + dfs(row, col + 1, grid, visited)
+        + dfs(row, col - 1, grid, visited);
   }
 
   private static int[][] getMoves(char c) {
