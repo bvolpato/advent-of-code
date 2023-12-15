@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 public class Day11 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getFromClipboard();
+        String clipboard = MyStringUtils.getContent(Day11.class.getResourceAsStream("/day11.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         List<String> contentLines = MyStringUtils.asListLines(clipboard);

@@ -10,7 +10,7 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 public class Day10 {
 
   public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-    String clipboard = MyStringUtils.getFromClipboard();
+    String clipboard = MyStringUtils.getContent(Day10.class.getResourceAsStream("/day10.txt"));
     System.out.println("Clipboard content: " + clipboard);
 
     List<String> listLines = MyStringUtils.asListLines(clipboard);
@@ -156,50 +156,50 @@ public class Day10 {
     }
     return moves;
   }
-}
+  static class Point {
+    int prevRow;
+    int prevCol;
 
-class Point {
-  int prevRow;
-  int prevCol;
+    int row;
+    int col;
+    int max;
 
-  int row;
-  int col;
-  int max;
+    public Point(int row, int col) {
+      this.row = row;
+      this.col = col;
+    }
 
-  public Point(int row, int col) {
-    this.row = row;
-    this.col = col;
+    public Point(int row, int col, int max) {
+      this.row = row;
+      this.col = col;
+      this.max = max;
+    }
+
+    public Point(int prevRow, int prevCol, int row, int col, int max) {
+      this.prevRow = prevRow;
+      this.prevCol = prevCol;
+      this.row = row;
+      this.col = col;
+      this.max = max;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("(row:%d,col:%d,dist=%d)", row, col, max);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Point point = (Point) o;
+      return row == point.row && col == point.col;
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(row, col);
+    }
   }
 
-  public Point(int row, int col, int max) {
-    this.row = row;
-    this.col = col;
-    this.max = max;
-  }
-
-  public Point(int prevRow, int prevCol, int row, int col, int max) {
-    this.prevRow = prevRow;
-    this.prevCol = prevCol;
-    this.row = row;
-    this.col = col;
-    this.max = max;
-  }
-
-  @Override
-  public String toString() {
-    return String.format("(row:%d,col:%d,dist=%d)", row, col, max);
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Point point = (Point) o;
-    return row == point.row && col == point.col;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(row, col);
-  }
 }
