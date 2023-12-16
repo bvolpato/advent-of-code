@@ -1,17 +1,19 @@
 package bruno.aoc2023;
 
+import static bruno.util.AOCReader.grid;
+
+import bruno.util.AOCReader;
 import java.io.IOException;
 import java.util.*;
-import org.brunocvcunha.inutils4j.MyStringUtils;
 
 public class Day16 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = MyStringUtils.getContent(Day16.class.getResourceAsStream("/2023/day16.txt"));
+    String clipboard = AOCReader.readDay(2023, 16);
     System.out.println("Clipboard content: " + clipboard);
 
-    part1(clipboard, 0, 0, RIGHT);
-    part2(clipboard);
+    System.out.println("Part 1: " + part1(clipboard, 0, 0, RIGHT));
+    System.out.println("Part 2: " + part2(clipboard));
   }
 
   static final int RIGHT = 0;
@@ -29,7 +31,7 @@ public class Day16 {
 
   public static int part1(String clipboard, int iRow, int iCol, int iDir) {
 
-    char[][] grid = buildGrid(clipboard);
+    char[][] grid = grid(clipboard);
 
     int energized = 0;
 
@@ -113,9 +115,9 @@ public class Day16 {
     return energized;
   }
 
-  public static void part2(String clipboard) {
+  public static int part2(String clipboard) {
     int ans = 0;
-    char[][] grid = buildGrid(clipboard);
+    char[][] grid = grid(clipboard);
 
     // Try all top row positions
     for (int i = 0; i < grid[0].length; i++) {
@@ -134,19 +136,6 @@ public class Day16 {
       ans = Math.max(ans, part1(clipboard, grid.length - 1, i, UP));
     }
 
-    System.out.println("Ans2: " + ans);
-  }
-
-  private static char[][] buildGrid(String clipboard) {
-    int rows = 0;
-
-    char[][] grid = new char[clipboard.split("\n").length][clipboard.split("\n")[0].length()];
-    for (String line : clipboard.split("\n")) {
-      for (int i = 0; i < line.length(); i++) {
-        grid[rows][i] = line.charAt(i);
-      }
-      rows++;
-    }
-    return grid;
+    return ans;
   }
 }

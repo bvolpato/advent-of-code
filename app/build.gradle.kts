@@ -8,6 +8,8 @@ repositories {
 
 dependencies {
     implementation("org.brunocvcunha.inutils4j:inutils4j:0.8")
+
+    testImplementation("junit:junit:4.13.2")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -16,3 +18,4 @@ java {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
+

@@ -1,25 +1,18 @@
 package bruno.aoc2023;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
+import static bruno.util.AOCReader.readDay;
+
+import bruno.util.AOCReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import org.brunocvcunha.inutils4j.MyStringUtils;
 
 public class Day10 {
 
-  public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-    String clipboard = MyStringUtils.getContent(Day10.class.getResourceAsStream("/2023/day10.txt"));
+  public static void main(String[] args) throws IOException {
+    String clipboard = readDay(2023, 10);
     System.out.println("Clipboard content: " + clipboard);
 
-    List<String> listLines = MyStringUtils.asListLines(clipboard);
-
-    char[][] grid =
-        listLines.stream()
-            .map(String::toCharArray)
-            .collect(Collectors.toList())
-            .toArray(new char[listLines.size()][]);
+    char[][] grid = AOCReader.grid(clipboard);
 
     Point initialPoint = new Point(0, 0);
 
@@ -156,6 +149,7 @@ public class Day10 {
     }
     return moves;
   }
+
   static class Point {
     int prevRow;
     int prevCol;
@@ -201,5 +195,4 @@ public class Day10 {
       return Objects.hash(row, col);
     }
   }
-
 }

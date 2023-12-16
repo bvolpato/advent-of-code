@@ -1,14 +1,14 @@
 package bruno.aoc2023;
 
+import static bruno.util.AOCReader.readDay;
+
 import java.io.IOException;
 import java.util.*;
-
-import org.brunocvcunha.inutils4j.MyStringUtils;
 
 public class Day15 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = MyStringUtils.getContent(Day15.class.getResourceAsStream("/2023/day15.txt"));
+    String clipboard = readDay(2023, 15);
     System.out.println("Clipboard content: " + clipboard);
 
     String[] tokens = clipboard.trim().split(",");

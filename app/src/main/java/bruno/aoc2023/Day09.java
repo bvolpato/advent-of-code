@@ -1,16 +1,16 @@
 package bruno.aoc2023;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
+import static bruno.util.AOCReader.readDay;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import org.brunocvcunha.inutils4j.MyStringUtils;
 
 public class Day09 {
 
-  public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-    String clipboard = MyStringUtils.getContent(Day09.class.getResourceAsStream("/2023/day09.txt"));
+  public static void main(String[] args) throws IOException {
+    String clipboard = readDay(2023, 9);
     System.out.println("Clipboard content: " + clipboard);
 
     List<String> contentLines = MyStringUtils.asListLines(clipboard);
