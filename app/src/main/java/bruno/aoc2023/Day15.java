@@ -8,7 +8,7 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 
 public class Day15 {
 
-  public static void main(String[] args) throws IOException, UnsupportedFlavorException {
+  public static void main(String[] args) throws IOException {
     String clipboard = MyStringUtils.getContent(Day15.class.getResourceAsStream("/day15.txt"));
     System.out.println("Clipboard content: " + clipboard);
 
