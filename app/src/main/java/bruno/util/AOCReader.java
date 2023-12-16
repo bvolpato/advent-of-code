@@ -11,10 +11,22 @@ public class AOCReader {
   public static String readDay(int year, int day) {
     try {
       return MyStringUtils.getContent(
-              Objects.requireNonNull(
-                  AOCReader.class.getResourceAsStream(
-                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + ".txt")))
-          .trim();
+                      Objects.requireNonNull(
+                              AOCReader.class.getResourceAsStream(
+                                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + ".txt")))
+              .trim();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static String readSample(int year, int day) {
+    try {
+      return MyStringUtils.getContent(
+                      Objects.requireNonNull(
+                              AOCReader.class.getResourceAsStream(
+                                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + "-sample.txt")))
+              .trim();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
