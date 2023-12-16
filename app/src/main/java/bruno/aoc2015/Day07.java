@@ -142,6 +142,13 @@ public class Day07 {
 
     List<String> lines = AOCReader.lines(clipboard);
 
+    Map<String, Node> wires = processWires(lines);
+    System.out.println(wires);
+
+    return wires.get("a").getValue(wires);
+  }
+
+  private static Map<String, Node> processWires(List<String> lines) {
     Map<String, Node> wires = new HashMap<>();
 
     for (String line : lines) {
@@ -175,9 +182,7 @@ public class Day07 {
       }
       wires.put(wire, node);
     }
-    System.out.println(wires);
-
-    return wires.get("a").getValue(wires);
+    return wires;
   }
 
   private static Node parseNode(String node) {
@@ -193,37 +198,7 @@ public class Day07 {
 
     List<String> lines = AOCReader.lines(clipboard);
 
-    Map<String, Node> wires = new HashMap<>();
-
-    for (String line : lines) {
-
-      String command = line.split(" -> ")[0];
-      String wire = line.split(" -> ")[1];
-
-      Node node;
-      if (command.matches("\\d+")) {
-        node = new Literal(Integer.parseInt(command));
-      } else if (command.matches("[a-z]+")) {
-        node = new RefNode(command);
-      } else if (command.contains(" AND ")) {
-        String[] split = command.split(" AND ");
-        node = new OpNode(parseNode(split[0]), parseNode(split[1]), "AND");
-      } else if (command.contains(" OR ")) {
-        String[] split = command.split(" OR ");
-        node = new OpNode(parseNode(split[0]), parseNode(split[1]), "OR");
-      } else if (command.contains("NOT ")) {
-        node = new OpNode(parseNode(command.split("NOT ")[1]), null, "NOT");
-      } else if (command.contains("LSHIFT ")) {
-        String[] split = command.split(" LSHIFT ");
-        node = new ShiftNode(parseNode(split[0]), Integer.parseInt(split[1]), true);
-      } else if (command.contains("RSHIFT ")) {
-        String[] split = command.split(" RSHIFT ");
-        node = new ShiftNode(parseNode(split[0]), Integer.parseInt(split[1]), false);
-      } else {
-        throw new RuntimeException("Unknown command: " + command);
-      }
-      wires.put(wire, node);
-    }
+    Map<String, Node> wires = processWires(lines);
     System.out.println(wires);
 
     wires.put("b", new Literal(part1));
