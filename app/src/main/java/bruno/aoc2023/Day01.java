@@ -9,7 +9,7 @@ import java.util.List;
 public class Day01 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day01.class.getResourceAsStream("/day01.txt"));
+        String clipboard = MyStringUtils.getContent(Day01.class.getResourceAsStream("/2023/day01.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         // Part 2

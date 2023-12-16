@@ -13,7 +13,7 @@ import java.util.Map;
 public class Day08 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day08.class.getResourceAsStream("/day08.txt"));
+        String clipboard = MyStringUtils.getContent(Day08.class.getResourceAsStream("/2023/day08.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
 

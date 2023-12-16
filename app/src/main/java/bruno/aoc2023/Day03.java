@@ -58,7 +58,7 @@ public class Day03 {
     }
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day03.class.getResourceAsStream("/day03.txt"));
+        String clipboard = MyStringUtils.getContent(Day03.class.getResourceAsStream("/2023/day03.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         List<String> listLines = MyStringUtils.asListLines(clipboard);

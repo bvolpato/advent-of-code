@@ -33,7 +33,7 @@ public class Day05 {
     }
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException, InterruptedException {
-        String clipboard = MyStringUtils.getContent(Day05.class.getResourceAsStream("/day05.txt"));
+        String clipboard = MyStringUtils.getContent(Day05.class.getResourceAsStream("/2023/day05.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         List<String> listLines = MyStringUtils.asListLines(clipboard);

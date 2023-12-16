@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Day13 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day13.class.getResourceAsStream("/day13.txt"));
+        String clipboard = MyStringUtils.getContent(Day13.class.getResourceAsStream("/2023/day13.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         String[] blocks = clipboard.split("\n\n");

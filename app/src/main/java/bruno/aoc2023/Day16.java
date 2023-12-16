@@ -1,6 +1,5 @@
 package bruno.aoc2023;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.*;
 import org.brunocvcunha.inutils4j.MyStringUtils;
@@ -8,7 +7,7 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 public class Day16 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = MyStringUtils.getContent(Day16.class.getResourceAsStream("/day16.txt"));
+    String clipboard = MyStringUtils.getContent(Day16.class.getResourceAsStream("/2023/day16.txt"));
     System.out.println("Clipboard content: " + clipboard);
 
     part1(clipboard, 0, 0, RIGHT);
@@ -30,15 +29,7 @@ public class Day16 {
 
   public static int part1(String clipboard, int iRow, int iCol, int iDir) {
 
-    int rows = 0;
-
-    char[][] grid = new char[clipboard.split("\n").length][clipboard.split("\n")[0].length()];
-    for (String line : clipboard.split("\n")) {
-      for (int i = 0; i < line.length(); i++) {
-        grid[rows][i] = line.charAt(i);
-      }
-      rows++;
-    }
+    char[][] grid = buildGrid(clipboard);
 
     int energized = 0;
 
@@ -77,37 +68,25 @@ public class Day16 {
           queue.offer(new int[] {row + moves[dir][0], col + moves[dir][1], dir});
         } else if (grid[row][col] == '\\') {
 
-          switch (dir) {
-            case RIGHT:
-              dir = DOWN;
-              break;
-            case DOWN:
-              dir = RIGHT;
-              break;
-            case LEFT:
-              dir = UP;
-              break;
-            case UP:
-              dir = LEFT;
-              break;
-          }
+          dir =
+              switch (dir) {
+                case RIGHT -> DOWN;
+                case DOWN -> RIGHT;
+                case LEFT -> UP;
+                case UP -> LEFT;
+                default -> dir;
+              };
           queue.offer(new int[] {row + moves[dir][0], col + moves[dir][1], dir});
         } else if (grid[row][col] == '/') {
 
-          switch (dir) {
-            case RIGHT:
-              dir = UP;
-              break;
-            case DOWN:
-              dir = LEFT;
-              break;
-            case LEFT:
-              dir = DOWN;
-              break;
-            case UP:
-              dir = RIGHT;
-              break;
-          }
+          dir =
+              switch (dir) {
+                case RIGHT -> UP;
+                case DOWN -> LEFT;
+                case LEFT -> DOWN;
+                case UP -> RIGHT;
+                default -> dir;
+              };
 
           queue.offer(new int[] {row + moves[dir][0], col + moves[dir][1], dir});
         } else if (grid[row][col] == '|') {
@@ -129,11 +108,6 @@ public class Day16 {
           }
         }
       }
-      // Print the whole grid
-      //      System.out.println("Energized: " + energized);
-      //      for (int i = 0; i < grid.length; i++) {
-      //        System.out.println(Arrays.toString(grid[i]));
-      //      }
     }
 
     return energized;
@@ -141,16 +115,7 @@ public class Day16 {
 
   public static void part2(String clipboard) {
     int ans = 0;
-
-    int rows = 0;
-
-    char[][] grid = new char[clipboard.split("\n").length][clipboard.split("\n")[0].length()];
-    for (String line : clipboard.split("\n")) {
-      for (int i = 0; i < line.length(); i++) {
-        grid[rows][i] = line.charAt(i);
-      }
-      rows++;
-    }
+    char[][] grid = buildGrid(clipboard);
 
     // Try all top row positions
     for (int i = 0; i < grid[0].length; i++) {
@@ -170,5 +135,18 @@ public class Day16 {
     }
 
     System.out.println("Ans2: " + ans);
+  }
+
+  private static char[][] buildGrid(String clipboard) {
+    int rows = 0;
+
+    char[][] grid = new char[clipboard.split("\n").length][clipboard.split("\n")[0].length()];
+    for (String line : clipboard.split("\n")) {
+      for (int i = 0; i < line.length(); i++) {
+        grid[rows][i] = line.charAt(i);
+      }
+      rows++;
+    }
+    return grid;
   }
 }

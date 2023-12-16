@@ -1,12 +1,10 @@
 package bruno.aoc2023;
 
-import org.brunocvcunha.inutils4j.MyArrUtils;
 import org.brunocvcunha.inutils4j.MyStringUtils;
 
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +15,7 @@ import java.util.stream.IntStream;
 public class Day11 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day11.class.getResourceAsStream("/day11.txt"));
+        String clipboard = MyStringUtils.getContent(Day11.class.getResourceAsStream("/2023/day11.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         List<String> contentLines = MyStringUtils.asListLines(clipboard);

@@ -10,7 +10,7 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 public class Day10 {
 
   public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-    String clipboard = MyStringUtils.getContent(Day10.class.getResourceAsStream("/day10.txt"));
+    String clipboard = MyStringUtils.getContent(Day10.class.getResourceAsStream("/2023/day10.txt"));
     System.out.println("Clipboard content: " + clipboard);
 
     List<String> listLines = MyStringUtils.asListLines(clipboard);

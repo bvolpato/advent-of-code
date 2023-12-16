@@ -1,6 +1,5 @@
 package bruno.aoc2023;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.*;
 
@@ -9,7 +8,7 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 public class Day15 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = MyStringUtils.getContent(Day15.class.getResourceAsStream("/day15.txt"));
+    String clipboard = MyStringUtils.getContent(Day15.class.getResourceAsStream("/2023/day15.txt"));
     System.out.println("Clipboard content: " + clipboard);
 
     String[] tokens = clipboard.trim().split(",");

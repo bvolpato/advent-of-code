@@ -4,14 +4,13 @@ import org.brunocvcunha.inutils4j.MyStringUtils;
 
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 
 public class Day14 {
 
     public static void main(String[] args) throws IOException, UnsupportedFlavorException {
-        String clipboard = MyStringUtils.getContent(Day14.class.getResourceAsStream("/day14.txt"));
+        String clipboard = MyStringUtils.getContent(Day14.class.getResourceAsStream("/2023/day14.txt"));
         System.out.println("Clipboard content: " + clipboard);
 
         List<String> listLines = MyStringUtils.asListLines(clipboard);
