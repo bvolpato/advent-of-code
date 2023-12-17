@@ -11,10 +11,10 @@ public class AOCReader {
   public static String readDay(int year, int day) {
     try {
       return MyStringUtils.getContent(
-                      Objects.requireNonNull(
-                              AOCReader.class.getResourceAsStream(
-                                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + ".txt")))
-              .trim();
+              Objects.requireNonNull(
+                  AOCReader.class.getResourceAsStream(
+                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + ".txt")))
+          .trim();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -23,10 +23,10 @@ public class AOCReader {
   public static String readSample(int year, int day) {
     try {
       return MyStringUtils.getContent(
-                      Objects.requireNonNull(
-                              AOCReader.class.getResourceAsStream(
-                                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + "-sample.txt")))
-              .trim();
+              Objects.requireNonNull(
+                  AOCReader.class.getResourceAsStream(
+                      "/" + year + "/day" + (day < 10 ? "0" : "") + day + "-sample.txt")))
+          .trim();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -41,6 +41,20 @@ public class AOCReader {
     char[][] grid = new char[lines.size()][];
     for (int i = 0; i < lines.size(); i++) {
       grid[i] = lines.get(i).toCharArray();
+    }
+    return grid;
+  }
+
+  public static int[][] intGrid(String clipboard) {
+    List<String> lines = MyStringUtils.asListLines(clipboard);
+    int[][] grid = new int[lines.size()][];
+    for (int i = 0; i < lines.size(); i++) {
+
+      int[] nums = new int[lines.get(i).length()];
+      for (int j = 0; j < lines.get(i).length(); j++) {
+        nums[j] = Character.getNumericValue(lines.get(i).charAt(j));
+      }
+      grid[i] = nums;
     }
     return grid;
   }

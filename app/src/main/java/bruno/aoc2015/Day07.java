@@ -139,12 +139,8 @@ public class Day07 {
   }
 
   private static int part1(String clipboard) {
-
     List<String> lines = AOCReader.lines(clipboard);
-
     Map<String, Node> wires = processWires(lines);
-    System.out.println(wires);
-
     return wires.get("a").getValue(wires);
   }
 
@@ -193,13 +189,9 @@ public class Day07 {
   }
 
   private static int part2(String clipboard) {
-
     int part1 = part1(clipboard);
-
     List<String> lines = AOCReader.lines(clipboard);
-
     Map<String, Node> wires = processWires(lines);
-    System.out.println(wires);
 
     wires.put("b", new Literal(part1));
 
