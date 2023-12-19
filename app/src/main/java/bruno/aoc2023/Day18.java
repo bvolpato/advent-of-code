@@ -75,7 +75,7 @@ import java.util.List;
 public class Day18 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = AOCReader.readDay(2023, 18);
+    String clipboard = AOCReader.readSample(2023, 18);
     System.out.println("Clipboard content: " + clipboard);
 
     System.out.println("Part 1: " + part1(clipboard));
@@ -180,6 +180,7 @@ public class Day18 {
     Point2D curr = new Point2D(start.x, start.y);
 
     List<Point2D> points = new ArrayList<>();
+    int numPoints = 0;
 
     for (String line : lines) {
       String color = line.substring(4).replace(")", "").replace("(", "").trim();
@@ -205,6 +206,9 @@ public class Day18 {
               curr.y + ((long) direction.row * distance));
       points.add(next);
       curr = next;
+
+        numPoints += distance;
+
     }
 
     // Print points
@@ -214,7 +218,13 @@ public class Day18 {
 
     points.add(start);
 
-    return (long) shoelaceArea(points);
+    double I = shoelaceArea(points);
+    int b = numPoints;
+
+    System.out.println("I: " + (long) I);
+    System.out.println("b: " + b);
+
+    return (long) I + b;
   }
 
   // Use Shoelace algorithm to calculate area of polygon
