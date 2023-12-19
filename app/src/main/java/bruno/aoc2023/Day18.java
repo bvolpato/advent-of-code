@@ -75,7 +75,7 @@ import java.util.List;
 public class Day18 {
 
   public static void main(String[] args) throws IOException {
-    String clipboard = AOCReader.readSample(2023, 18);
+    String clipboard = AOCReader.readDay(2023, 18);
     System.out.println("Clipboard content: " + clipboard);
 
     System.out.println("Part 1: " + part1(clipboard));
@@ -153,6 +153,7 @@ public class Day18 {
 
     int ans = internal + infiniteGrid.size();
     System.out.println("Ans: " + ans);
+    System.out.println("Using shoelace: " + totalArea(points, infiniteGrid.size()));
     return internal + infiniteGrid.size();
   }
 
@@ -207,8 +208,7 @@ public class Day18 {
       points.add(next);
       curr = next;
 
-        numPoints += distance;
-
+      numPoints += distance;
     }
 
     // Print points
@@ -218,23 +218,26 @@ public class Day18 {
 
     points.add(start);
 
-    double I = shoelaceArea(points);
+    return totalArea(points, numPoints);
+  }
+
+  private static long totalArea(List<Point2D> points, int numPoints) {
+    long A = (long) shoelaceArea(points);
     int b = numPoints;
 
-    System.out.println("I: " + (long) I);
-    System.out.println("b: " + b);
-
-    return (long) I + b;
+    long I = A + 1 - b / 2;
+    return I + b;
   }
 
   // Use Shoelace algorithm to calculate area of polygon
   // https://en.wikipedia.org/wiki/Shoelace_formula
-  private static double shoelaceArea(List<Point2D> v) {
-    int n = v.size();
-    double a = 0.0;
-    for (int i = 0; i < n - 1; i++) {
-      a += v.get(i).x * v.get(i + 1).y - v.get(i + 1).x * v.get(i).y;
+  private static double shoelaceArea(List<Point2D> points) {
+    long sum = 0;
+    for (int i = 0; i < points.size() - 1; i++) {
+      Point2D curr = points.get(i);
+      Point2D next = points.get(i + 1);
+      sum += curr.x * next.y - curr.y * next.x;
     }
-    return Math.abs(a + v.get(n - 1).x * v.get(0).y - v.get(0).x * v.get(n - 1).y) / 2.0;
+    return Math.abs(sum) / 2.0;
   }
 }
