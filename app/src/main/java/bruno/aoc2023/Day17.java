@@ -67,7 +67,7 @@ public class Day17 {
         continue;
       }
 
-      Node node = nodes[currentPos.x][currentPos.y];
+      Node node = nodes[currentPos.intX()][currentPos.intY()];
       if (node.visited.contains(new Pair<>(explorer.direction, explorer.directionSteps))) {
         continue;
       }
@@ -80,7 +80,7 @@ public class Day17 {
                 currentPos.x + explorer.direction.col, currentPos.y + explorer.direction.row);
 
         if (next.isValid(nodes)) {
-          Node nextNode = nodes[next.x][next.y];
+          Node nextNode = nodes[next.intX()][next.intY()];
 
           if (!nextNode.visited.contains(new Pair<>(explorer.direction, explorer.directionSteps))) {
             queue.add(
@@ -98,7 +98,7 @@ public class Day17 {
         Point2D rightPoint =
             new Point2D(currentPos.x + rightDirection.col, currentPos.y + rightDirection.row);
         if (rightPoint.isValid(nodes)) {
-          Node rightNode = nodes[rightPoint.x][rightPoint.y];
+          Node rightNode = nodes[rightPoint.intX()][rightPoint.intY()];
           if (!rightNode.visited.contains(new Pair<>(rightDirection, 1))) {
             queue.add(new Explorer(rightPoint, rightDirection, 1, explorer.heat + rightNode.heat));
           }
@@ -108,7 +108,7 @@ public class Day17 {
         Point2D leftPoint =
             new Point2D(currentPos.x + leftDirection.col, currentPos.y + leftDirection.row);
         if (leftPoint.isValid(nodes)) {
-          Node leftNode = nodes[leftPoint.x][leftPoint.y];
+          Node leftNode = nodes[leftPoint.intX()][leftPoint.intY()];
           if (!leftNode.visited.contains(new Pair<>(leftDirection, 1))) {
             queue.add(new Explorer(leftPoint, leftDirection, 1, explorer.heat + leftNode.heat));
           }

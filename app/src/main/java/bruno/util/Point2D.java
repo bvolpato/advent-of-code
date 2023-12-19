@@ -1,10 +1,10 @@
 package bruno.util;
 
-public class Point2D {
-  public int x;
-  public int y;
+public class Point2D implements Comparable<Point2D> {
+  public long x;
+  public long y;
 
-  public Point2D(int x, int y) {
+  public Point2D(long x, long y) {
     this.x = x;
     this.y = y;
   }
@@ -14,19 +14,19 @@ public class Point2D {
     this.y = other.y;
   }
 
-  public int getX() {
+  public long getX() {
     return x;
   }
 
-  public int getY() {
+  public long getY() {
     return y;
   }
 
-  public void setX(int x) {
+  public void setX(long x) {
     this.x = x;
   }
 
-  public void setY(int y) {
+  public void setY(long y) {
     this.y = y;
   }
 
@@ -46,10 +46,27 @@ public class Point2D {
 
   @Override
   public int hashCode() {
-    return 31 * x + y;
+    return (int) (31L * x + y) % 1000000007;
   }
 
   public boolean isValid(Object[][] grid) {
     return x >= 0 && x < grid.length && y >= 0 && y < grid[0].length;
   }
+
+  @Override
+  public int compareTo(Point2D o) {
+    if (x == o.x) {
+      return Long.compare(y, o.y);
+    }
+    return Long.compare(x, o.x);
+  }
+
+  public int intX() {
+    return (int) x;
+  }
+
+    public int intY() {
+        return (int) y;
+    }
+
 }
