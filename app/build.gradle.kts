@@ -1,5 +1,7 @@
 plugins {
     application
+    // Spotless
+    id("com.diffplug.spotless") version "7.0.0.BETA4"
 }
 
 repositories {
@@ -17,6 +19,13 @@ dependencies {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+// Configure Spotless plugin to use googleJavaFormat 1.21.0
+spotless {
+    java {
+        googleJavaFormat("1.21.0")
     }
 }
 

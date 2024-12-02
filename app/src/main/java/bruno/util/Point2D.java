@@ -65,8 +65,7 @@ public class Point2D implements Comparable<Point2D> {
     return (int) x;
   }
 
-    public int intY() {
-        return (int) y;
-    }
-
+  public int intY() {
+    return (int) y;
+  }
 }
